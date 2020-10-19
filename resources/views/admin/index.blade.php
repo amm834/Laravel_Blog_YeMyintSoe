@@ -21,15 +21,17 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item dropdown ">
+          @auth
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            Admin
+          {{Auth::user()->name}}
           </a>
+          @endauth
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+            <li><a class="dropdown-item" href="" onclick="if(confirm('Are You Sure To Logout?')){event.preventDefault();document.getElementById('logout-form').submit();}">Logout</a></li>
+            <form action="{{route('logout')}}" method="post" id="logout-form">
+              @csrf
+            </form>
+           </ul>
         </li>
       </ul>
      </div>

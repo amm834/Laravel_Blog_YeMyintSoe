@@ -12,6 +12,8 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     
+
     public function index()
     {
         // Admin Index

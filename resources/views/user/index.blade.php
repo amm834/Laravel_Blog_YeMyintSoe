@@ -51,10 +51,21 @@
 
         <!-- NAVBAR SEXTION -->
         <div class="position-sticky" id="navbar">
-          <a href="index.html">HOME</a>
-          <a href="javascript:void(0)">ABOUT ME</a>
-          <a href="javascript:void(0)">SKILLS</a>
+          <a href="{{url('/')}}">HOME</a>
           <a href="posts.html">BLOGS</a>
+
+          @if(Auth::check())
+          <a href="" class="float-right" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
+          <form action="{{route('logout')}}" method="post" id="logout-form">
+            @csrf
+          </form>
+          <a  class="float-right">{{Auth::user()->name}}</a>
+          @else
+          <a href="{{url('register')}}" class="float-right">Register</a>
+          <a href="{{url('login')}}" class="float-right">Login</a>
+          @endif
+
+
         </div>
 
 
